@@ -6,6 +6,7 @@ FOLDERS = ["data", "notebooks", "scripts", "src", "tests"]
 
 # Requirements template
 REQUIREMENTS = """# Project dependencies
+#pathlib
 #numpy
 #pandas
 #python-dateutil
@@ -59,12 +60,35 @@ pip install --upgrade pip
 pip install -r requirements.txt
 """
 
+# Template for scripts/main.py
+MAIN_SCRIPT = """def hello_world():
+    \"\"\"Example function to demonstrate project structure.\"\"\"
+    return "Hello, world!"
+
 def main():
-    # Prompt user for project path
+    message = hello_world()
+    print(message)
+
+if __name__ == "__main__":
+    main()
+"""
+
+# Template for tests/test_main.py (using unittest)
+TEST_SCRIPT = """import unittest
+from src.main import hello_world
+
+class TestMain(unittest.TestCase):
+    def test_hello_world(self):
+        self.assertEqual(hello_world(), "Hello, world!")
+
+if __name__ == "__main__":
+    unittest.main()
+"""
+
+def main():
     project_path_input = input("Enter the full path where you want to create the new project: ").strip()
     project_root = Path(project_path_input)
 
-    # Create directory if it doesn't exist
     project_root.mkdir(parents=True, exist_ok=False)
     print(f"Initializing project in: {project_root.resolve()}")
 
@@ -73,6 +97,13 @@ def main():
         path = project_root / folder
         path.mkdir(exist_ok=True)
         print(f"Created folder: {path}")
+
+    # Create starter files
+    (project_root / "scripts" / "main.py").write_text(MAIN_SCRIPT)
+    print("Created scripts/main.py")
+
+    (project_root / "tests" / "test_main.py").write_text(TEST_SCRIPT)
+    print("Created tests/test_main.py")
 
     # Create requirements.txt
     (project_root / "requirements.txt").write_text(REQUIREMENTS)
@@ -84,7 +115,7 @@ def main():
 
     # Create setup scripts
     (project_root / "setup_env.sh").write_text(BASH_SCRIPT)
-    os.chmod(project_root / "setup_env.sh", 0o755)  # make executable
+    os.chmod(project_root / "setup_env.sh", 0o755)
 
     (project_root / "setup_env.bat").write_text(BAT_SCRIPT)
     print("Created setup_env.sh and setup_env.bat")

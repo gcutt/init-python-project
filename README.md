@@ -50,11 +50,13 @@ Once the environment is ready, you can create a new project in your preferred ID
 ## 📂 Example Project Structure
 ```
 my_project/
-├── .venv/       [created after running setup_env.*]
+├── .venv/                [created after running setup_env.*]
+├── scripts/
+│   └── main.py           [starter script]
 ├── src/
-│   └── main.py
+│   └── main.py           [optional, move main.py here if you want src logic]
 ├── tests/
-│   └── test_main.py
+│   └── test_main.py      [starter test]
 ├── setup_env.bat
 ├── setup_env.sh
 ├── requirements.txt
