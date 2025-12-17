@@ -1,4 +1,4 @@
-# init-project
+# init-python-project
 
 A simple utility to **initialize a Python project folder** with a ready-to-use structure and virtual environment setup.
 
@@ -17,7 +17,7 @@ A simple utility to **initialize a Python project folder** with a ready-to-use s
 ### 1. Run the Initialization Script
 Execute the main script to start the setup:
 ```bash
-python init-project.py
+python init-python-project.py
 ```
 
 You will be prompted to enter the **full path** where the new project directory should be created.  
