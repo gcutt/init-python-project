@@ -54,7 +54,7 @@ my_project/
 ├── scripts/
 │   └── main.py           [starter script]
 ├── src/
-│   └── main.py           [optional, move main.py here if you want src logic, or place helpers  here]
+│   └── main.py           [optional, move main.py here if you want src logic, or place helpers here]
 ├── tests/
 │   └── test_main.py      [starter test]
 ├── setup_env.bat
